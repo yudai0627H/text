@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 
 <!-- bxslider -->
+<!-- ➀　スクールで学び、課題に個人的に取り入れた-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
@@ -23,7 +24,7 @@
       });
     });
   </script>
-
+<!--　ここまで➀-->
 
 </head>
 

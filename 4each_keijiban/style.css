@@ -6,6 +6,7 @@ body{
     
 }
 
+/* hoverは個人的に用いた */
 a:hover{
     color: blue;
 }
@@ -14,7 +15,8 @@ a:hover{
 
 
 
-/* グリッドレイアウトに使った */
+/* グリッドレイアウトを使った */
+/* ➁　グリッドレイアウトはスクールで習ってはいない */
 #page{
     margin:0 auto;
     width: auto;
