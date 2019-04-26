@@ -43,7 +43,7 @@ public class TestDAO {
 		DBConnector db=new DBConnector();
 		Connection con=db.getConnection();
 
-		String sql="select*from users where user_name=? and password=?";
+		String sql="select * from users where user_name=? and password=?";
 
 		try{
 			PreparedStatement ps=con.prepareStatement(sql);
@@ -53,7 +53,7 @@ public class TestDAO {
 
 			while (rs.next()){
 				LoginDTO dto=new LoginDTO();
-				dto.setUsername(rs.getString("username"));
+				dto.setUsername(rs.getString("user_name"));
 				dto.setPassword(rs.getString("password"));
 				loginDTOList.add(dto);
 			}

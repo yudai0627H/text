@@ -1,0 +1,115 @@
+package com.internousdev.ecsite.action;
+
+import java.sql.SQLException;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.ecsite.dao.BuyItemDAO;
+import com.internousdev.ecsite.dao.ItemAddCompleteDAO;
+import com.internousdev.ecsite.dto.ItemListDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class ItemAddConfirmAction extends ActionSupport implements SessionAware {
+
+	private String id;
+	private String itemName;
+	private String itemPrice;
+	private String itemStock;
+	public Map<String,Object> session;
+	private String errorMassage;
+	private BuyItemDAO dao=new BuyItemDAO();
+	private ItemListDTO dto=new ItemListDTO();
+
+
+	public String execute() throws SQLException{
+		String result=SUCCESS;
+		dto=dao.getItemInfo(id);
+		session.put("addItem", dto);
+		ItemAddCompleteDAO itemAddCompleteDAO =new ItemAddCompleteDAO();
+
+
+		if(!(itemName.equals(""))
+				&&!(itemPrice.equals(""))
+				&&!(itemStock.equals(""))){
+
+
+			if(itemAddCompleteDAO.isExistsItemName(itemName)){
+				setErrorMassage("同じ商品があります");
+				result=ERROR;
+			}else{
+				result=SUCCESS;
+				session.put("itemName",itemName);
+				session.put("itemPrice",itemPrice);
+				session.put("itemStock",itemStock);
+
+				try{
+					Integer.parseInt(itemPrice);
+					Integer.parseInt(itemStock);
+				}catch(NumberFormatException e){
+					setErrorMassage("値段または数値以外が入力されています");
+					result=ERROR;
+				}
+
+			}
+		}else{
+			setErrorMassage("未入力の項目のがあります,");
+			result=ERROR;
+		}
+		return result;
+	}
+
+
+
+	public String getItemName(){
+		return itemName;
+	}
+
+	public void setItemName(String itemName){
+		this.itemName=itemName;
+	}
+
+	public String getItemPrice(){
+		return itemPrice;
+	}
+
+	public void setItemPrice(String itemPrice){
+		this.itemPrice=itemPrice;
+	}
+
+	public String getItemStock(){
+		return itemStock;
+	}
+
+	public void setItemStock(String itemStock){
+		this.itemStock=itemStock;
+	}
+	@Override
+	public void setSession(Map<String,Object> session){
+		this.session=session;
+	}
+
+	public Map<String, Object> getSession(){
+		return session;
+	}
+
+	public String getErrorMassage(){
+		return errorMassage;
+	}
+
+	public void setErrorMassage(String errorMassage){
+		this.errorMassage=errorMassage;
+	}
+
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+
+}

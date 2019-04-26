@@ -1,0 +1,124 @@
+package com.internousdev.ecsite.action;
+
+import java.sql.SQLException;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.ecsite.dao.BuyItemCompleteDAO;
+import com.internousdev.ecsite.dao.BuyItemDAO;
+import com.opensymphony.xwork2.ActionSupport;
+
+
+public class BuyItemConfirmAction extends ActionSupport implements SessionAware {
+
+	private static final long serialVersionUID=-831427602485310415L;
+	private String id;
+	private String itemPrice;
+
+	//アイテム購入個数
+	//
+	private String count;
+
+	//支払い方法
+	//
+	private String pay;
+	public Map<String, Object> session;
+
+	//
+	//商品購入情報登録完了メソット
+	//
+	public String execute(){
+		String	result = ERROR;
+		System.out.println("-----BuyItemConfirmAction");
+
+
+		String loginUserId = session.get("login_user_id").toString();
+		System.out.println(loginUserId);
+
+		BuyItemCompleteDAO dao=new BuyItemCompleteDAO();
+
+		System.out.println(id);
+		System.out.println(itemPrice);
+		System.out.println(count);
+		System.out.println(pay);
+		System.out.println(loginUserId);
+		System.out.println("------------------");
+
+		String[] idList=id.split(", ",0);
+		String[] itemPriceList=itemPrice.split(", ",0);
+		String[] countList=count.split(", ",0);
+
+		int updateCount=0;
+		for(int i=0; i<idList.length;i++){
+			int totalCount=Integer.parseInt(countList[i]);
+			int price=Integer.parseInt(itemPriceList[i]);
+			int totalPrice=price*totalCount;
+			int insertCount = 0;
+			try{
+
+				 insertCount = dao.buyItemeInfo(idList[i], loginUserId, totalPrice, totalCount, pay);
+				if (insertCount > 0) {
+					BuyItemDAO buyItemDAO = new BuyItemDAO();
+					int intItemStock = buyItemDAO.getItemStock(idList[i]);
+					// updateCount +=
+				}
+
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+		}
+		if(updateCount == idList.length){
+			System.out.println("DBへ登録");
+			result=SUCCESS;
+
+		}else{
+			System.out.println("DBへ登録失敗");
+			result=ERROR;
+
+		}
+
+		return result;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getItemPrice() {
+		return itemPrice;
+	}
+
+	public void setItemPrice(String itemPrice) {
+		this.itemPrice = itemPrice;
+	}
+
+	public String getCount() {
+		return count;
+	}
+
+	public void setCount(String count) {
+		this.count = count;
+	}
+
+	public String getPay() {
+		return pay;
+	}
+
+	public void setPay(String pay) {
+		this.pay = pay;
+	}
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+}

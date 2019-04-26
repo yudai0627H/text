@@ -1,0 +1,66 @@
+@CHARSET "UTF-8";
+/* ページ全体 */
+body {
+    margin: 0;
+    width: 100%;
+    display: grid;
+    grid-template-rows:1fr 3fr 1fr;
+    grid-template-columns: auto;
+	border-top:2rem solid blue;
+	font-family: Verdana, Helvetica, sans-serif;
+    font-size: 1rem;
+	color: #333;
+    background: #fff;
+	letter-spacing: 0.2rem;
+}
+
+
+table  {
+	text-align: center;
+    margin: 0 auto;
+    table-layout: fixed;
+    width:100%;
+}
+
+
+#A{
+	text-align:center;
+}
+
+/* ID LAYOUT*/
+#top {
+    padding: 0;
+	margin: 1rem auto;
+	border: 0.1rem solid #333;
+}
+
+header {
+    text-align: center;
+    border-bottom:1rem;
+    margin-bottom: 1rem;
+    grid-row: 1;
+}
+
+#main {
+
+	height: 20rem;
+    text-align: center;
+    grid-row:2;
+}
+
+
+#main #pay{
+    margin: 2rem;
+}
+
+
+/* フッター */
+footer {
+    background:grey;
+    grid-row:3;
+    margin: 0;
+}
+
+footer #idou{
+    text-align: center;
+}

@@ -1,0 +1,178 @@
+package com.internousdev.ecsite.action;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.ecsite.dao.BuyItemDAO;
+import com.internousdev.ecsite.dao.ItemListDAO;
+import com.internousdev.ecsite.dto.ItemListDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+
+public class BuyItemAction extends ActionSupport implements SessionAware {
+
+
+	private static final long serialVersionUID=-7787951498734562406L;
+	private Collection<String> checkList;
+	private String itemName;
+	//アイテム購入個数
+	//
+	private String count;
+	private List<String> errorMessageList = new ArrayList<String>();
+
+	//支払い方法
+	//
+	private String pay;
+	public Map<String, Object> session;
+	private List<ItemListDTO> itemListDTOList =new ArrayList<ItemListDTO>();
+
+
+	//商品購入情報登録メソット
+	//
+	public String execute() throws SQLException{
+		String	result = ERROR;
+		System.out.println("-----BuyItemAction");
+
+		System.out.println("COUNT:"+count);
+		System.out.println("PAY:"+pay);
+		System.out.println("CHECKLIST:"+checkList);
+
+		String[] itemNameArray = itemName.split(", ",0);
+		String[] countArray=count.split(", ",0);
+
+		ItemListDAO dao=new ItemListDAO();
+		if(checkList==null){
+			errorMessageList.add("商品が選択されていません");
+			itemListDTOList=dao.getItemList();
+
+			return ERROR;
+		}
+		BuyItemDAO buyItemDAO = new BuyItemDAO();
+
+		int i = 0;
+		for(String check : checkList){
+			System.out.println("CHECKED ID----->"+check);
+			ItemListDTO dto =new ItemListDTO();
+			dto = buyItemDAO.getItemInfo(check);
+			// 配列をListに変換
+			List<String> itemNameList = new ArrayList<String>(Arrays.asList(itemNameArray));
+			List<String> countList = new ArrayList<String>(Arrays.asList(countArray));
+			int intCount = -1;
+			String dtoItemName = dto.getItemName();
+			String listItemName = itemNameList.get(i);
+			if(dtoItemName.equals(listItemName)) {
+
+			}
+			intCount = Integer.parseInt(countList.get(i));
+			//TODO
+			int intItemStock = dto.getItemStock();
+			if (intCount > intItemStock) {
+				errorMessageList.add(dto.getItemName()+"は在庫切れです。");
+			} else {
+				if(pay.equals("2")) {
+					pay = "クレジットカード";
+				} else {
+					pay = "現金払い";
+				}
+				dto.setPay(pay);
+
+				System.out.println("カート情報--");
+				System.out.println("ID     				:"+dto.getId());
+				System.out.println("ITEMTRANSACTIONID   :"+dto.getItemTransactionId());
+				System.out.println("ITEMNAME		    :"+dto.getItemName());
+				System.out.println("ITEMPRICE		    :"+dto.getItemPrice());
+				System.out.println("ITEMSTOCK     		:"+dto.getItemStock());
+				System.out.println("COUNT			    :"+dto.getCount());
+				System.out.println("TOTALPRICE 		    :"+dto.getTotalPrice());
+				System.out.println("TOTALCOUNT		    :"+dto.getTotalCount());
+				System.out.println("PAY				    :"+dto.getPay());
+				System.out.println("----------------------");
+
+				itemListDTOList.add(dto);
+
+			}
+			i++;
+		}
+
+
+		//			}
+
+		//		}
+
+
+
+		if (errorMessageList.size() > 0) {
+			result = ERROR;
+			itemListDTOList=dao.getItemList();
+		} else {
+			result=SUCCESS;
+		}
+		return result;
+	}
+
+	public Collection<String> getCheckList(){
+		return checkList;
+	}
+
+	public void setCheckList(Collection<String> checkList){
+		this.checkList=checkList;
+	}
+
+	public String getItemName(){
+		return itemName;
+	}
+
+	public void setItemName(String itemName){
+		this.itemName=itemName;
+	}
+
+	public String getCount(){
+		return count;
+	}
+
+	public void setCount(String count) {
+		this.count=count;
+	}
+
+	public String getPay(){
+		return pay;
+	}
+
+	public void setPay(String pay){
+		this.pay=pay;
+	}
+
+	public Map<String, Object> getSession(){
+		return session;
+	}
+
+	@Override
+	public void setSession(Map<String, Object> session){
+		this.session=session;
+	}
+
+	public List<ItemListDTO> getItemListDTOList(){
+		return itemListDTOList;
+	}
+
+	public List<String> getErrorMessageList() {
+		return errorMessageList;
+	}
+
+	public void setErrorMessageList(List<String> errorMessageList) {
+		this.errorMessageList = errorMessageList;
+	}
+
+	public void setItemList(List<ItemListDTO>itemListDTOList){
+		this.itemListDTOList=itemListDTOList;
+	}
+
+
+
+}

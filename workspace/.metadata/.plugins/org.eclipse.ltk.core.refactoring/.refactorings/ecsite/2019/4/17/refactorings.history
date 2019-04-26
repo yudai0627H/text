@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="メソッド名 &apos;com.internousdev.ecsite.dao.ItemAddCompleteDAO.isExistsItemId(...)&apos; を &apos;isExistsItemName&apos; に変更します&#x0D;&#x0A;- 元のプロジェクト: &apos;ecsite&apos;&#x0D;&#x0A;- オリジナル要素: &apos;com.internousdev.ecsite.dao.ItemAddCompleteDAO.isExistsItemId(...)&apos;&#x0D;&#x0A;- 名前変更済み要素: &apos;com.internousdev.ecsite.dao.ItemAddCompleteDAO.isExistsItemName(...)&apos;&#x0D;&#x0A;- リファクタリングされた要素の参照を更新" delegate="false" deprecate="false" description="メソッド名 &apos;isExistsItemId&apos; を変更します" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;com.internousdev.ecsite.dao{ItemAddCompleteDAO.java[ItemAddCompleteDAO~isExistsItemId~QString;" name="isExistsItemName" references="true" stamp="1555911611927" version="1.0"/>
+</session>

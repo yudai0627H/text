@@ -2,6 +2,7 @@ package com.internousdev.webproj.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+
 public class InquiryCompleteAction extends ActionSupport{
 
 	private String name;
@@ -12,31 +13,30 @@ public class InquiryCompleteAction extends ActionSupport{
 		return SUCCESS;
 	}
 
-
 	public String getName(){
 		return name;
 	}
 
-	public void setUsername(String name) {
-		this.name= name;
+	public void setUsername(String name){
+		this.name=name;
 	}
 
-	public String getQtype() {
+	public String getQtype(){
 		return qtype;
 	}
 
-
-
-	public void setQtype(String qtype) {
-		this.qtype= qtype;
+	public void setQtype(String qtype){
+		this.qtype=qtype;
 	}
 
 	public String getBody(){
 		return body;
 	}
 
-	public void setBody(String body) {
-		this.body= body;
+	public void setBody(String body){
+		this.body=body;
 	}
 
 }
+
+
