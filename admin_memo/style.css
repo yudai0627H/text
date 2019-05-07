@@ -1,0 +1,170 @@
+/* ページ全体 */
+
+
+body{
+    margin:0;
+    
+}
+
+/* hoverは個人的に用いた */
+a:hover{
+    color: blue;
+}
+
+
+
+
+
+/* グリッドレイアウトを使った */
+/* ➁　グリッドレイアウトはスクールで習ってはいない */
+#page{
+    margin:0 auto;
+    width: auto;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-auto-rows: 1fr 3fr auto;
+}
+
+
+/*ヘッダー*/
+header{
+    grid-column:1/3;
+    grid-row:1;  
+}
+
+nav ul{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows:auto;
+    background: black;
+    /* height: 1.8rem; */
+    margin-bottom:0px; 
+    
+}
+
+nav li, nav a{
+    display: block;
+    /* color: white; */
+    /* text-align: center; */
+    
+}
+
+nav a{
+    margin: 2px;
+    padding: 0.4rem 0;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+
+}
+
+
+/* メイン */
+main{
+    color: black;
+    background: white;
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.main_content h1{
+    border-left:black 5px solid; 
+    /* margin-top:10px;  */
+    margin-left:10px; 
+    padding-left:3px;
+    border-bottom: gray solid 1px; 
+}
+.enter_form{
+    padding-left:18px;
+    border: solid gray 2px;
+    width: 90%;
+    margin-left:20px;
+    border-radius:3px;
+    background: skyblue;  
+}
+
+.enter_form h3{
+    border-left: red solid 3px; 
+    padding-left:2px; 
+}
+
+.enter_form #title{
+    margin-top:1rem; 
+}
+
+.enter_form #commtents{
+    margin-top:1rem; 
+}
+
+.enter_form #send{
+    margin-top:1rem; 
+    margin-bottom:1rem; 
+    
+}
+
+.enter_form #send input{
+    border-bottom:solid 2px black; 
+}
+
+.kiji{
+    width: 90%;
+    margin-left:20px;
+    padding-left:20px;  
+    border: solid gray 2px;
+    margin-top:1rem;
+    margin-bottom: 1rem; 
+    border-radius: 3px;
+}
+
+.kiji h3{
+    width: 96%;
+    border-bottom:solid gray 1px;
+    padding-left:0.2rem; 
+}
+
+.kiji .contents{
+    margin-bottom:1rem; 
+    
+}
+
+.kiji .user_name{
+    margin-top:1rem; 
+    font-size: 0.7rem;
+}
+/* サブ */
+
+.sub{
+    color: black;
+    background: white;
+    grid-column: 2;
+    grid-row:2 ;
+    margin-top:10px;
+    padding-left:18px;  
+}
+
+.sub ul, .sub li{
+    display: block;
+
+}
+
+.sub a{
+    text-decoration: none;
+    color: black;
+    font-size: 11px;
+}
+
+.sub h3{
+    border-bottom:dotted 3px; 
+}
+
+/*  フッター*/
+footer {
+    grid-column:1/3;
+    grid-row: 3;
+    background: black;
+}
+
+footer .foot{
+    color: white;
+    text-align: center;
+}
