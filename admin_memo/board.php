@@ -60,24 +60,24 @@ while($row=$result->fetch()){
 
  <body>
 
-<?php //ここに後で入れる ?>
+<?php //ここに後で入れるかも ?>
 
 <div id="page">
   <header>
 
     <div class="abc">
-    <div><img src="kojin.png"></div>
-    <div><img src="computer_net_stalker_man.jpg"></div>
-    <div><img src="ai_man.jpg"></div>
+    <div><img src="img/kojin.png"></div>
+    <div><img src="img/computer_net_stalker_man.jpg"></div>
+    <div><img src="img/ai_man.jpg"></div>
     </div>
 
     <nav>
         <ul>
             <li><a href="home.php">ホーム画面に戻る</a></li>
-            <li><a href="#">オススメを探す</a></li>
-            <li><a href="#">楽しみ方</a></li>
-            <li><a href="#">お問い合わせ</a></li>
-            <li><a href="#">その他</a></li>
+            <li><a href="#">お気に入り一覧</a></li>
+            <li><a href="#">新しくメモを作成</a></li>
+            <li><a href="#">先週作成した一覧</a></li>
+            <li><a href="#">先月の作成した一覧</a></li>
         </ul>
     </nav>
   </header>
@@ -133,24 +133,7 @@ if(!$result){
   exit();
 }
 
-// }else{
-//  $query2="SELECT * FROM yudai WHERE user_id=".$_SESSION['user']."";
-//  $result=$pdo->query($query2);
-//  if(!$result){
-//    print('クエリー2が失敗しました'.$pdo->error);
-//    $pdo->close();
-//    exit();
- }
 
-//  while($row=$result->fetch()){
-//    $title=$row['title'];
-//    $commtents=$row['commtents'];
- 
-//}
-// }
-
-//  $result->close();
-//** 
 
     echo "<div class='kiji'>";
     echo "<h3>".es($title)."</h3>";
@@ -161,34 +144,34 @@ if(!$result){
     echo "</div>";
     echo "</div>";
 
-    // $result->close();
+   
      ?>    
     
   </main>
 
 <div class="sub">
- <h3>人気の記事</h3>
+ <h3>更新メモ一覧</h3>
  <ul>
-    <li><a href="#">PHPオススメ本</a></li>
-    <li><a href="#">PHP vs Ruby 今から勉強するならどっち</a></li>
-    <li><a href="#">初心者向けの言語なに？</a></li>
-    <li><a href="#">【悲報】C言語わからなすぎる</a></li>
+    <li><a href="#">GWの予定</a></li>
+    <li><a href="#">PHP勉強したこと</a></li>
+    <li><a href="#">影響力の武器内容</a></li>
+    <li><a href="#">日曜日の予定</a></li>
   </ul>
  
- <h3>最近の記事</h3>
+ <h3>予定関連</h3>
  <ul>
-    <li><a href="#">Pythonの需要って実際どうなの</a></li>
-    <li><a href="#">【朗報】COBOLさんTwitterで急上昇</a></li>
-    <li><a href="#">サッカー日本代表は強いの？</a></li>
-    <li><a href="#">転職するか悩み中...</a></li>
+    <li><a href="#">GWの予定</a></li>
+    <li><a href="#">日曜日の予定</a></li>
+    <li><a href="#">剣道の応援</a></li>
+    <li><a href="#">高校の遊び</a></li>
  </ul>
 
- <h3>カテゴリ</h3>
+ <h3>勉強・本関連</h3>
  <ul>
-    <li><a href="#">就職・転職</a></li>
-    <li><a href="#">勉強法</a></li>
-    <li><a href="#">プログラミング言語</a></li>
-    <li><a href="#">その他</a></li>
+    <li><a href="#">PHP勉強したこと</a></li>
+    <li><a href="#">影響力の武器内容</a></li>
+    <li><a href="#">統計検定</a></li>
+    <li><a href="#">Pythonでやりたいこと</a></li>
   </ul>
  </div>
 
