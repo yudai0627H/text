@@ -4,7 +4,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>土方掲示板</title>
+<title>IT掲示板</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 
 <!-- bxslider -->
@@ -19,8 +19,7 @@
           auto:true,
           mode:'horizontal',
           speed:2000,
-        //   infiniteLoop:true;
-        //   slideWidith:400
+        
       });
     });
   </script>
@@ -36,11 +35,7 @@
  mb_internal_encoding("utf8");
     $pdo=new PDO("mysql:dbname=yudai_h;host=localhost;","root","");
     $stmt=$pdo->query("select*from 4each_keijiban");
-    // while($row=$stmt->fetch()){
-        // echo $row['handlename'];
-        // echo $row['title'];
-        // echo $row['commtents'];
-    // }
+    
   ?>
 
     <!-- ヘッダー -->
@@ -49,9 +44,9 @@
     <!-- <div id="logo"> -->
 
     <div class="abc">
-    <div><img src="job_it_dokata.jpg"></div>
-    <div><img src="computer_net_stalker_man.jpg"></div>
-    <div><img src="ai_man.jpg"></div>
+    <div><img src="img/job_it_dokata.jpg"></div>
+    <div><img src="img/computer_net_stalker_man.jpg"></div>
+    <div><img src="img/ai_man.jpg"></div>
     </div>
 
     
